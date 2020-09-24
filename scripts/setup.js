@@ -15,23 +15,8 @@ const stages = {
  * Setup Utility Functions
  */
 function setup(name, version) {
-  
-  if (!db._collection('sessions')) {
-    db._createDocumentCollection('sessions');
-  }
-  const sessions = db._collection('sessions');
-
-  sessions.ensureIndex({
-    type: 'hash',
-    unique: false,
-    fields: ['uid']
-  });
-
-  sessions.ensureIndex({
-    type: 'hash',
-    unique: false,
-    fields: ['expires']
-  });
+  const m1 = require('./migrations/1-initial.js');
+  const m2 = require('./migrations/2-indexes.js');
 
   migrations.setup(name, version, stages);
 }
@@ -52,7 +37,7 @@ function upgrade(name, installed) {
 /**
  * Migrations
  */
-const preMigration = '0.2.3';
+const preMigration = false;
 
 if (!info && !preMigration) {
   /**
