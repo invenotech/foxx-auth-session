@@ -16,7 +16,10 @@ const stages = {
  */
 function setup(name, version) {
   const m1 = require('./migrations/1-initial.js');
-  const m2 = require('./migrations/2-indexes.js');
+  
+  if(m1){
+    const m2 = require('./migrations/2-indexes.js');
+  }
 
   migrations.setup(name, version, stages);
 }
