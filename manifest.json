@@ -1,0 +1,27 @@
+{
+  "name": "auth-session",
+  "version": "0.2.4",
+  "license": "MIT",
+  "description": "Sessions Management",
+  "keywords": ["invenotech", "rest", "auth", "sessions"],
+  "author": "David L Dyess II",
+  "contributors": ["David Dyess II <david.dyess@gmail.com>"],
+  "main": "index.js",
+  "scripts": {
+    "setup": "scripts/setup.js",
+    "prune": "scripts/prune.js"
+  },
+  "provides": {
+    "@invenotech/sessions": "1.0.0"
+  },
+  "dependencies": {
+    "migrations": {
+      "name": "@invenotech/migrations",
+      "version": "^1.0.0",
+      "description": "Migrations Management"
+    }
+  },
+  "engines": {
+    "arangodb": "^3.0.0"
+  }
+}
