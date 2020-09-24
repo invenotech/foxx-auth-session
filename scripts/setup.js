@@ -15,11 +15,23 @@ const stages = {
  * Setup Utility Functions
  */
 function setup(name, version) {
-  const m1 = require('./migrations/1-initial.js');
   
-  if(m1){
-    const m2 = require('./migrations/2-indexes.js');
+  if (!db._collection('sessions')) {
+    db._createDocumentCollection('sessions');
   }
+  const sessions = db._collection('sessions');
+
+  sessions.ensureIndex({
+    type: 'hash',
+    unique: false,
+    fields: ['uid']
+  });
+
+  sessions.ensureIndex({
+    type: 'hash',
+    unique: false,
+    fields: ['expires']
+  });
 
   migrations.setup(name, version, stages);
 }
